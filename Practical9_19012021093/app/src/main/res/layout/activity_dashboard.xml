@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="20dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dashboard_bg"
+                android:paddingBottom="60dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="60dp"
+                    android:text="Rajesh Shah"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:text="rajesh.shah@gmail.com"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:rating="3.5"
+                    android:scaleX=".5"
+                    android:scaleY=".5"
+                    android:theme="@style/RatingBar"
+                    android:transformPivotX="80dp"
+                    android:transformPivotY="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_user_email" />
+
+                <ImageView
+                    android:id="@+id/iv_person"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/person"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/btn_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="45dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="Logout"
+                    android:textColor="#cc66b4"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_person" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="-70dp"
+                android:layout_marginEnd="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                app:layout_constraintTop_toBottomOf="@id/layout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_prsnl_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Personal Information"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="15dp"
+                        android:background="#DCDCDC"
+                        app:layout_constraintTop_toBottomOf="@id/tv_prsnl_info" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:src="@drawable/ic_round_person"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_full_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Full Name"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_prsnl_info" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Rajesh Mohanlal Shah"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_full_name" />
+
+                    <TextView
+                        android:id="@+id/tv_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Phone Number"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                    <TextView
+                        android:id="@+id/tv_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="+91 9919129123"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone_number" />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Email id"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_number" />
+
+                    <TextView
+                        android:id="@+id/tv_email_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="rajesh.shah@gmail.com"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+                    <TextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="City"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.40"
+                        app:layout_constraintStart_toEndOf="@id/tv_phone_number"
+                        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                    <TextView
+                        android:id="@+id/tv_user_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Mehsana, Gujarat"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.9"
+                        app:layout_constraintStart_toEndOf="@id/tv_number"
+                        app:layout_constraintTop_toBottomOf="@id/tv_city" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cv_info">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_alarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Set Alarm Time"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#DCDCDC"
+                        app:layout_constraintTop_toBottomOf="@id/tv_alarm" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_add_alarm"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_current_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Current Date time:"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_alarm" />
+
+                    <TextClock
+                        android:id="@+id/tc_current_date"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="wrap_content"
+                        android:format12Hour="hh:mm:ss a MMM,dd yyyy"
+                        app:layout_constraintTop_toBottomOf="@id/tv_current_date" />
+
+                    <TextView
+                        android:id="@+id/tv_alarm_head"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Alarm:"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/tc_current_date" />
+
+                    <TextView
+                        android:id="@+id/tv_set_alarm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="SetAlarm"
+                        android:textSize="18sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_alarm_head" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cv_alarm">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#DCDCDC"
+                        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_event"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_description_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="The iconfont folder contains pre generated font files that can be included in a project. This is especially convenient for the web; however, it is generally better to link to the web font hosted on Google Fonts."
+                        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/iv_wave"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_wave"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCDCDC"
+        android:translationZ="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

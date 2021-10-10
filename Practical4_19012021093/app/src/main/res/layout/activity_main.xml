@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:hint="Enter phone number or URL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/button_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:minWidth="48dp"
+        android:text="Call"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_call"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_input" />
+
+    <TextView
+        android:id="@+id/button_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="60dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Open URL"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_url"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_layout_input" />
+
+
+    <TextView
+        android:id="@+id/button_pick_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Pick Contact"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_contact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_url" />
+
+
+    <TextView
+        android:id="@+id/button_open_call_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Open Call log"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_call"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_pick_contact" />
+
+    <TextView
+        android:id="@+id/button_open_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Open Gallery"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_gallery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_open_call_log" />
+
+    <TextView
+        android:id="@+id/button_set_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Set Alarm"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_add_alarm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_open_gallery" />
+
+    <TextView
+        android:id="@+id/button_open_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Open Camera"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:drawableTopCompat="@drawable/ic_camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_set_alarm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
