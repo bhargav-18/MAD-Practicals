@@ -13,6 +13,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,6 +33,7 @@ class DashboardActivity : AppCompatActivity() {
         val tvEmailId = findViewById<TextView>(R.id.tv_email_id)
         val btnLogout = findViewById<TextView>(R.id.btn_logout)
         val tvSetAlarm = findViewById<TextView>(R.id.tv_set_alarm)
+        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
 
         tvUserName.text = LoginInfo.name
         tvUserEmail.text = LoginInfo.email
@@ -77,6 +79,19 @@ class DashboardActivity : AppCompatActivity() {
             mTimePicker.setTitle("Select Time")
             mTimePicker.show()
         }
+
+        bottomNavBar.setOnItemSelectedListener {
+            if(it.itemId == R.id.notes){
+                Intent(this, NotesActivity::class.java).apply {
+                    startActivity(this)
+                }
+                return@setOnItemSelectedListener true
+            }
+            else{
+                return@setOnItemSelectedListener true
+            }
+        }
+
     }
 
 
