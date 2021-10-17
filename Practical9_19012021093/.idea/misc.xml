@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/activity_dashboard.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/drawable/dashboard_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/drawable/ic_delete.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/drawable/ic_edit.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/drawable/right_side_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/drawable/side_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/activity_dashboard.xml" value="0.17" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/activity_note_info.xml" value="0.22" />
         <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/activity_notes.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/activity_sign_up.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/add_edit_note_dialog.xml" value="0.2" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/list_item.xml" value="0.25" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/layout/row_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical9_19012021093/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/Practical9_19012021093/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
         <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/Practical9_19012021093/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />

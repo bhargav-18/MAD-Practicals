@@ -380,8 +380,8 @@
     <ImageView
         android:id="@+id/iv_wave"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:scaleType="fitXY"
+        android:layout_height="65dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_wave"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar" />
 

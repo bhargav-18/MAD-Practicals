@@ -19,6 +19,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DashboardActivity : AppCompatActivity() {
+
+    override fun onStart() {
+        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
+        bottomNavBar.menu.findItem(R.id.dashboard).isChecked = true
+        super.onStart()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
