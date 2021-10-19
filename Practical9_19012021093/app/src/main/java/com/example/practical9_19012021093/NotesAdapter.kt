@@ -6,10 +6,7 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.TimePicker
+import android.widget.*
 import androidx.annotation.RequiresApi
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
@@ -75,15 +72,26 @@ class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseA
             val date = cal.get(Calendar.DATE)
 
             btnOk.setOnClickListener {
-                cal.set(year, month, date, timePicker.hour, timePicker.minute, 0)
-                noteList[position].title = etNoteTitle.text.toString().trim()
-                noteList[position].subTitle = etNoteSubTitle.text.toString().trim()
-                noteList[position].description = etNoteDescription.text.toString().trim()
-                noteList[position].modifiedTime = cal
-                noteList[position].isReminder = reminderSwitch.isChecked
-                Notes.setReminder(context, noteList[position])
-                notifyDataSetChanged()
-                dialog.dismiss()
+                if (etNoteTitle.text.toString().isEmpty() or etNoteSubTitle.text.toString()
+                        .isEmpty() or etNoteDescription.text.toString().isEmpty()
+                ) {
+                    Toast.makeText(
+                        context,
+                        "Please enter all fields\nAll fields are required",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else{
+                    cal.set(year, month, date, timePicker.hour, timePicker.minute, 0)
+                    noteList[position].title = etNoteTitle.text.toString().trim()
+                    noteList[position].subTitle = etNoteSubTitle.text.toString().trim()
+                    noteList[position].description = etNoteDescription.text.toString().trim()
+                    noteList[position].modifiedTime = cal
+                    noteList[position].isReminder = reminderSwitch.isChecked
+                    Notes.setReminder(context, noteList[position])
+                    notifyDataSetChanged()
+                    dialog.dismiss()
+                }
             }
             dialog.show()
         }

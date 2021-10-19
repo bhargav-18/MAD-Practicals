@@ -13,6 +13,7 @@ import android.view.WindowManager
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -75,18 +76,28 @@ class NotesActivity : AppCompatActivity() {
             val date = cal.get(Calendar.DATE)
 
             btnOk.setOnClickListener {
-                cal.set(year, month, date, timePicker.hour, timePicker.minute, 0)
-                val note = Notes(
-                    noteTitle.text.toString().trim(),
-                    noteSubTitle.text.toString().trim(),
-                    noteDescription.text.toString().trim(),
-                    cal,
-                    reminderSwitch.isChecked
-                )
-                listItems.add(note)
-                Notes.setReminder(this, note)
-                adapter.notifyDataSetChanged()
-                dialog.dismiss()
+                if (noteTitle.text.toString().isEmpty() or noteSubTitle.text.toString()
+                        .isEmpty() or noteDescription.text.toString().isEmpty()
+                ) {
+                    Toast.makeText(
+                        this,
+                        "Please enter all fields\nAll fields are required",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    cal.set(year, month, date, timePicker.hour, timePicker.minute, 0)
+                    val note = Notes(
+                        noteTitle.text.toString().trim(),
+                        noteSubTitle.text.toString().trim(),
+                        noteDescription.text.toString().trim(),
+                        cal,
+                        reminderSwitch.isChecked
+                    )
+                    listItems.add(note)
+                    Notes.setReminder(this, note)
+                    adapter.notifyDataSetChanged()
+                    dialog.dismiss()
+                }
             }
             dialog.show()
         }
