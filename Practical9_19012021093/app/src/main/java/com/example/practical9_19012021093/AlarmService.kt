@@ -9,7 +9,6 @@ import android.util.Log
 class AlarmService : Service() {
     var mp: MediaPlayer? = null
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.d("AlarmServiceTag", "onStartCommand: Alarm")
         if (intent != null) {
             mp = MediaPlayer.create(this, R.raw.alarm)
             mp?.start()

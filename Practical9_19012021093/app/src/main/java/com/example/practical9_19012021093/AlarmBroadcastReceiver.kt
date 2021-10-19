@@ -15,7 +15,6 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
                 intentService.putExtra("Service1", intent.getStringExtra("Service1"))
                 if (str1 == "Start") {
                     context.startService(intentService)
-                    Log.d("BroadcastTag", "onReceive: IN Broadcast")
                 } else if (str1 == "Stop")
                     context.stopService(intentService)
             }
