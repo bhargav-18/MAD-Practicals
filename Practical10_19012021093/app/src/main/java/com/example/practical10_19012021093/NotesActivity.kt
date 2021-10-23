@@ -6,14 +6,12 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.ListView
-import android.widget.TextView
-import android.widget.TimePicker
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,6 +29,8 @@ class NotesActivity : AppCompatActivity() {
         bottomNavBar.menu.findItem(R.id.notes).isChecked = true
         super.onStart()
     }
+
+    lateinit var gnu: AnimationDrawable
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +58,12 @@ class NotesActivity : AppCompatActivity() {
                 return@setOnItemSelectedListener true
             }
         }
+
+        val ivGnuImg = findViewById<ImageView>(R.id.iv_gnu_img)
+
+        ivGnuImg.setBackgroundResource(R.drawable.gnu_img_animation)
+        gnu = ivGnuImg.background as AnimationDrawable
+        gnu.start()
 
         val fabAddNote = findViewById<FloatingActionButton>(R.id.fab_add_note)
         fabAddNote.setOnClickListener {

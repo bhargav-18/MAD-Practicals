@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/drawable/dashboard_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/drawable/ic_dashboard.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/drawable/rotate_animation.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/drawable/side_background.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/drawable/splash_screen_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/layout/activity_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/layout/activity_notes.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/Bhargav Joshi/AndroidStudioProjects/MAD Practicals/Practical10_19012021093/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

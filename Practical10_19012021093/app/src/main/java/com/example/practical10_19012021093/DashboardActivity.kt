@@ -5,12 +5,14 @@ import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,6 +21,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DashboardActivity : AppCompatActivity() {
+
+    lateinit var heart: AnimationDrawable
+    lateinit var gnu: AnimationDrawable
 
     override fun onStart() {
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
@@ -41,6 +46,16 @@ class DashboardActivity : AppCompatActivity() {
         val btnLogout = findViewById<TextView>(R.id.btn_logout)
         val tvSetAlarm = findViewById<TextView>(R.id.tv_set_alarm)
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
+        val ivHeart = findViewById<ImageView>(R.id.iv_heart)
+        val ivGnuImg = findViewById<ImageView>(R.id.iv_gnu_img)
+
+        ivHeart.setBackgroundResource(R.drawable.heart_animation)
+        heart = ivHeart.background as AnimationDrawable
+        heart.start()
+
+        ivGnuImg.setBackgroundResource(R.drawable.gnu_img_animation)
+        gnu = ivGnuImg.background as AnimationDrawable
+        gnu.start()
 
         tvUserName.text = LoginInfo.name
         tvUserEmail.text = LoginInfo.email
