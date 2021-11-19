@@ -15,6 +15,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseAdapter() {
+
+    private val databaseHandler: DatabaseHandler = DatabaseHandler(context)
+
     override fun getCount(): Int {
         return noteList.size
     }
@@ -80,8 +83,7 @@ class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseA
                         "Please enter all fields\nAll fields are required",
                         Toast.LENGTH_SHORT
                     ).show()
-                }
-                else{
+                } else {
                     cal.set(year, month, date, timePicker.hour, timePicker.minute, 0)
                     noteList[position].title = etNoteTitle.text.toString().trim()
                     noteList[position].subTitle = etNoteSubTitle.text.toString().trim()
@@ -89,6 +91,7 @@ class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseA
                     noteList[position].modifiedTime = cal
                     noteList[position].isReminder = reminderSwitch.isChecked
                     Notes.setReminder(context, noteList[position])
+                    databaseHandler.updateData(note = noteList[position])
                     notifyDataSetChanged()
                     dialog.dismiss()
                 }
@@ -96,9 +99,11 @@ class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseA
             dialog.show()
         }
         ivDeleteNote.setOnClickListener {
+            val note = noteList[position]
             noteList[position].isReminder = false
             Notes.setReminder(context, noteList[position])
             noteList.removeAt(position)
+            databaseHandler.deleteData(note = note)
             notifyDataSetChanged()
         }
 

@@ -1,6 +1,8 @@
 package com.example.practical11_19012021093
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -14,15 +16,12 @@ import androidx.cardview.widget.CardView
 import com.google.android.material.textfield.TextInputEditText
 
 class LoginActivity : AppCompatActivity() {
+
+    lateinit var pref: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        if (LoginInfo.status == "LoggedIn") {
-            Intent(this, DashboardActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
 
         setStatusBarTransparent()
 
@@ -50,26 +49,28 @@ class LoginActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            when {
-                email.isEmpty() or password.isEmpty() -> {
-                    Toast.makeText(
-                        this,
-                        "Email or password cannot be empty",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                email != LoginInfo.email || password != LoginInfo.password -> {
-                    Toast.makeText(
-                        this,
-                        "Invalid Login Credentials\nPlease try again",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                else -> {
-                    Intent(this, DashboardActivity::class.java).apply {
-                        LoginInfo.status = "LoggedIn"
-                        startActivity(this)
+            if (email.isEmpty() or password.isEmpty()) {
+                Toast.makeText(
+                    this,
+                    "Email or password cannot be empty",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+
+                pref = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+                val sharedEmail = pref.getString("email", null)
+                val sharedPassword = pref.getString("password", null)
+
+                if (email == sharedEmail && password == sharedPassword) {
+                    Intent(this, DashboardActivity::class.java).also {
+                        startActivity(it)
                     }
+                } else {
+                    etEmail.setText("")
+                    etPassword.setText("")
+                    Toast.makeText(this, "Invalid Email-Id or Password!!", Toast.LENGTH_SHORT)
+                        .show()
+
                 }
             }
 

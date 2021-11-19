@@ -1,6 +1,8 @@
 package com.example.practical11_19012021093
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,9 @@ import androidx.cardview.widget.CardView
 import com.google.android.material.textfield.TextInputEditText
 
 class SignUpActivity : AppCompatActivity() {
+
+    lateinit var pref: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -59,11 +64,21 @@ class SignUpActivity : AppCompatActivity() {
                     ).show()
                 }
                 else -> {
-                    LoginInfo.name = name
-                    LoginInfo.phone = phone
-                    LoginInfo.city = city
-                    LoginInfo.email = email
-                    LoginInfo.password = password
+
+                    pref = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+                    val editor = pref.edit()
+
+                    editor.apply {
+
+                        putString("name",name)
+                        putString("phone_no",phone)
+                        putString("city",city)
+                        putString("email",email)
+                        putString("password",password)
+                        putBoolean("status", true)
+
+                    }.apply()
+
                     Intent(this, LoginActivity::class.java).also {
                         startActivity(it)
                     }
@@ -77,6 +92,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun setStatusBarTransparent() {
         if (Build.VERSION.SDK_INT in 19..20) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

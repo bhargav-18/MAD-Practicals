@@ -11,30 +11,25 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class Notes(
-    var title: String, var subTitle: String, var description: String, var modifiedTime: Calendar,
-    var isReminder: Boolean = false
-) {
+    var id: Int = 0,
+    var title: String,
+    var subTitle: String,
+    var description: String,
+    var modifiedTime: Calendar,
+    var isReminder: Boolean = false,
     var timeStamp: Long = System.currentTimeMillis()
-    var id = noteIdGeneration()
+) : Serializable {
 
     companion object {
-        var idNote = 0
-        fun noteIdGeneration(): Int {
-            idNote++
-            return idNote
-        }
-
-        var notesArray: List<Notes> = ArrayList()
 
         fun setReminder(context: Context, notes: Notes) {
 
-            val index = notesArray.indexOf(notes)
             val intent = Intent(context, NotificationReceiver::class.java)
-            intent.putExtra("index", index)
+            intent.putExtra("note", notes)
 
             val pendingIntent = PendingIntent.getBroadcast(
                 context,
-                index,
+                notes.id,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )

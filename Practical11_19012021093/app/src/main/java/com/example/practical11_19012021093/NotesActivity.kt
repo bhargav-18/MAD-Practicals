@@ -24,6 +24,8 @@ import kotlin.collections.ArrayList
 
 class NotesActivity : AppCompatActivity() {
 
+    private lateinit var databaseHandler: DatabaseHandler
+
     override fun onStart() {
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
         bottomNavBar.menu.findItem(R.id.notes).isChecked = true
@@ -37,10 +39,12 @@ class NotesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
 
+        databaseHandler = DatabaseHandler(this)
+
         createNotificationChannel()
         setStatusBarTransparent()
 
-        val listItems = Notes.notesArray as ArrayList<Notes>
+        val listItems = databaseHandler.getAllNotes()
 
         val adapter = NotesAdapter(this, listItems)
         val lvNotes = findViewById<ListView>(R.id.lv_notes)
@@ -93,13 +97,14 @@ class NotesActivity : AppCompatActivity() {
                 } else {
                     cal.set(year, month, date, timePicker.hour, timePicker.minute, 0)
                     val note = Notes(
-                        noteTitle.text.toString().trim(),
-                        noteSubTitle.text.toString().trim(),
-                        noteDescription.text.toString().trim(),
-                        cal,
-                        reminderSwitch.isChecked
+                        title = noteTitle.text.toString().trim(),
+                        subTitle = noteSubTitle.text.toString().trim(),
+                        description = noteDescription.text.toString().trim(),
+                        modifiedTime = cal,
+                        isReminder = reminderSwitch.isChecked
                     )
                     listItems.add(note)
+                    databaseHandler.insetNote(note = note)
                     Notes.setReminder(this, note)
                     adapter.notifyDataSetChanged()
                     dialog.dismiss()

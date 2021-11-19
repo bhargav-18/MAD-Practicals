@@ -10,23 +10,23 @@ import androidx.core.app.NotificationManagerCompat
 class NotificationReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
 
-        val index = intent?.getIntExtra("index", 0)
+        val note = intent?.getSerializableExtra("note") as Notes
         val intentOpenActivity = Intent(context, NoteInfoActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            putExtra("index", index)
+            putExtra("note", note)
         }
 
         val contentIntent = PendingIntent.getActivity(
             context,
-            index!!,
+            note.id,
             intentOpenActivity,
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
         val builder = NotificationCompat.Builder(context!!, channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle(Notes.notesArray[index].title)
-            .setContentText(Notes.notesArray[index].description)
+            .setContentTitle(note.title)
+            .setContentText(note.description)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setCategory(NotificationCompat.CATEGORY_REMINDER)
             .setContentIntent(contentIntent)
@@ -34,7 +34,7 @@ class NotificationReceiver : BroadcastReceiver() {
             .setOnlyAlertOnce(true)
 
         with(NotificationManagerCompat.from(context)) {
-            notify(index, builder.build())
+            notify(note.id, builder.build())
         }
     }
 }

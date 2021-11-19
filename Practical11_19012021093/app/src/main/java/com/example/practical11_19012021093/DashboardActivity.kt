@@ -3,7 +3,9 @@ package com.example.practical11_19012021093
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.os.Build
@@ -24,6 +26,7 @@ class DashboardActivity : AppCompatActivity() {
 
     lateinit var heart: AnimationDrawable
     lateinit var gnu: AnimationDrawable
+    lateinit var pref: SharedPreferences
 
     override fun onStart() {
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
@@ -57,15 +60,24 @@ class DashboardActivity : AppCompatActivity() {
         gnu = ivGnuImg.background as AnimationDrawable
         gnu.start()
 
-        tvUserName.text = LoginInfo.name
-        tvUserEmail.text = LoginInfo.email
-        tvName.text = LoginInfo.name
-        tvNumber.text = LoginInfo.phone
-        tvUserCity.text = LoginInfo.city
-        tvEmailId.text = LoginInfo.email
+        pref = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+
+        tvUserName.text = pref.getString("name", null)
+        tvUserEmail.text = pref.getString("email", null)
+        tvName.text = pref.getString("name", null)
+        tvNumber.text = pref.getString("phone_no", null)
+        tvUserCity.text = pref.getString("city", null)
+        tvEmailId.text = pref.getString("email", null)
 
         btnLogout.setOnClickListener {
-            LoginInfo.status = "LoggedOut"
+            val editor = pref.edit()
+
+            editor.apply {
+
+                putBoolean("status", false)
+
+            }.apply()
+
             Intent(this, LoginActivity::class.java).apply {
                 startActivity(this)
             }
@@ -103,13 +115,12 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         bottomNavBar.setOnItemSelectedListener {
-            if(it.itemId == R.id.notes){
+            if (it.itemId == R.id.notes) {
                 Intent(this, NotesActivity::class.java).apply {
                     startActivity(this)
                 }
                 return@setOnItemSelectedListener true
-            }
-            else{
+            } else {
                 return@setOnItemSelectedListener true
             }
         }
