@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class DatabaseHandler(
+class DatabaseHelper(
     context: Context
 ) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -77,7 +77,7 @@ class DatabaseHandler(
         return success!!
     }
 
-    fun updateData(note: Notes): Int {
+    fun updateNote(note: Notes): Int {
         val db = this.writableDatabase
         val result = db.update(
             TABLE_NOTES, getValues(note), KEY_ID +
@@ -88,7 +88,7 @@ class DatabaseHandler(
         return result
     }
 
-    fun deleteData(note: Notes): Int {
+    fun deleteNote(note: Notes): Int {
         val db = this.writableDatabase
         val result = db.delete(
             TABLE_NOTES, "$KEY_ID = ? ",

@@ -16,7 +16,7 @@ import kotlin.collections.ArrayList
 
 class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseAdapter() {
 
-    private val databaseHandler: DatabaseHandler = DatabaseHandler(context)
+    private val databaseHelper: DatabaseHelper = DatabaseHelper(context)
 
     override fun getCount(): Int {
         return noteList.size
@@ -91,7 +91,7 @@ class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseA
                     noteList[position].modifiedTime = cal
                     noteList[position].isReminder = reminderSwitch.isChecked
                     Notes.setReminder(context, noteList[position])
-                    databaseHandler.updateData(note = noteList[position])
+                    databaseHelper.updateNote(note = noteList[position])
                     notifyDataSetChanged()
                     dialog.dismiss()
                 }
@@ -103,7 +103,7 @@ class NotesAdapter(var context: Context, var noteList: ArrayList<Notes>) : BaseA
             noteList[position].isReminder = false
             Notes.setReminder(context, noteList[position])
             noteList.removeAt(position)
-            databaseHandler.deleteData(note = note)
+            databaseHelper.deleteNote(note = note)
             notifyDataSetChanged()
         }
 

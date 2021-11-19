@@ -19,12 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class NotesActivity : AppCompatActivity() {
 
-    private lateinit var databaseHandler: DatabaseHandler
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onStart() {
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
@@ -39,12 +38,12 @@ class NotesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
 
-        databaseHandler = DatabaseHandler(this)
+        databaseHelper = DatabaseHelper(this)
 
         createNotificationChannel()
         setStatusBarTransparent()
 
-        val listItems = databaseHandler.getAllNotes()
+        val listItems = databaseHelper.getAllNotes()
 
         val adapter = NotesAdapter(this, listItems)
         val lvNotes = findViewById<ListView>(R.id.lv_notes)
@@ -104,7 +103,7 @@ class NotesActivity : AppCompatActivity() {
                         isReminder = reminderSwitch.isChecked
                     )
                     listItems.add(note)
-                    databaseHandler.insetNote(note = note)
+                    databaseHelper.insetNote(note = note)
                     Notes.setReminder(this, note)
                     adapter.notifyDataSetChanged()
                     dialog.dismiss()
