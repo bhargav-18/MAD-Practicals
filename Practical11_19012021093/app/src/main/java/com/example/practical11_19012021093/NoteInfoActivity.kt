@@ -30,15 +30,19 @@ class NoteInfoActivity : AppCompatActivity() {
         val tvNoteTimeStamp = findViewById<TextView>(R.id.tv_note_time_stamp)
         val tvNoteReminderTime = findViewById<TextView>(R.id.tv_notes_reminder_time)
 
-        val note = intent.getSerializableExtra("note") as Notes
+        val title = intent?.getStringExtra("noteTitle")
+        val subTitle = intent?.getStringExtra("noteSubtitle")
+        val description = intent?.getStringExtra("noteDescription")
+        val timeStamp = intent?.getLongExtra("noteTimeStamp", 0)
+        val modifiedTime = intent?.getLongExtra("noteModifiedTime", 0)
 
-        tvNoteTitle.text = note.title
-        tvNoteSubTitle.text = note.subTitle
-        tvNoteDescription.text = note.description
+        tvNoteTitle.text = title
+        tvNoteSubTitle.text = subTitle
+        tvNoteDescription.text = description
         val timeFormat = SimpleDateFormat("MMM, dd yyyy hh:mm:ss a", Locale.ENGLISH)
-        tvNoteTimeStamp.text = timeFormat.format(note.timeStamp)
+        tvNoteTimeStamp.text = timeFormat.format(timeStamp)
         val time =
-            "Reminder at " + timeFormat.format(note.modifiedTime.timeInMillis)
+            "Reminder at " + timeFormat.format(modifiedTime)
         tvNoteReminderTime.text = time
     }
 

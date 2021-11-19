@@ -5,10 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import java.io.Serializable
 import java.util.*
-import kotlin.collections.ArrayList
 
 class Notes(
     var id: Int = 0,
@@ -18,14 +15,18 @@ class Notes(
     var modifiedTime: Calendar,
     var isReminder: Boolean = false,
     var timeStamp: Long = System.currentTimeMillis()
-) : Serializable {
+) {
 
     companion object {
 
         fun setReminder(context: Context, notes: Notes) {
 
             val intent = Intent(context, NotificationReceiver::class.java)
-            intent.putExtra("note", notes)
+            intent.putExtra("noteTitle", notes.title)
+            intent.putExtra("noteSubtitle", notes.subTitle)
+            intent.putExtra("noteDescription", notes.description)
+            intent.putExtra("noteTimeStamp", notes.timeStamp)
+            intent.putExtra("noteModifiedTime", notes.modifiedTime.timeInMillis)
 
             val pendingIntent = PendingIntent.getBroadcast(
                 context,
