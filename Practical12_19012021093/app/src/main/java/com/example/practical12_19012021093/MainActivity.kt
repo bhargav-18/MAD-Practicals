@@ -1,5 +1,6 @@
 package com.example.practical12_19012021093
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.ListView
@@ -13,8 +14,8 @@ import java.net.URL
 class MainActivity : AppCompatActivity() {
 
 
-    val listItems = Contact.contactArray as ArrayList<Contact>
-    lateinit var list: ListView
+    val listItems: ArrayList<Contact> = arrayListOf()
+    lateinit var lvContacts: ListView
     private lateinit var adapter: ContactListAdapter
     private lateinit var progress: ProgressBar
 
@@ -23,12 +24,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        list = findViewById(R.id.lv_contacts)
+        lvContacts = findViewById(R.id.lv_contacts)
         adapter = ContactListAdapter(this, listItems)
 
         progress = findViewById(R.id.progress_bar)
 
         contacts().execute()
+
+        lvContacts.setOnItemClickListener { adapterView, view, i, l ->
+            val contact = adapter.getItem(i) as Contact
+            Intent(this, ContactInfo::class.java).apply {
+                putExtra("id", contact._id)
+                putExtra("name", contact.name)
+                putExtra("phone", contact.phone)
+                putExtra("address", contact.address)
+                startActivity(this)
+            }
+        }
+
     }
 
     inner class contacts() : AsyncTask<String, Void, String>() {
@@ -63,12 +76,21 @@ class MainActivity : AppCompatActivity() {
                 for (i in 0 until jsonarr.length()) {
 
                     val jsonObj = jsonarr.getJSONObject(i)
+                    val jsonId = jsonObj.getString("_id")
                     val jsonName = jsonObj.getString("name")
                     val jsonPhone = jsonObj.getString("phone")
-                    listItems.add(Contact(jsonName, jsonPhone))
+                    val jsonAddress = jsonObj.getString("address")
+                    listItems.add(
+                        Contact(
+                            _id = jsonId,
+                            name = jsonName,
+                            phone = jsonPhone,
+                            address = jsonAddress
+                        )
+                    )
 
                 }
-                list.adapter = adapter
+                lvContacts.adapter = adapter
 
             } catch (e: Exception) {
                 Toast.makeText(applicationContext, e.message.toString(), Toast.LENGTH_SHORT).show()

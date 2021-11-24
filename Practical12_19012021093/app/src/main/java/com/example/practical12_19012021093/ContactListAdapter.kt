@@ -29,7 +29,7 @@ class ContactListAdapter(private var context: Context, var items: ArrayList<Cont
         val contactPhone: TextView = view.findViewById(R.id.tvPhone)
 
         contactName.text = items[position].name
-        contactPhone.text = items[position].num
+        contactPhone.text = items[position].phone
 
         return view
     }
