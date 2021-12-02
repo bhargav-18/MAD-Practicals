@@ -19,7 +19,7 @@ import java.util.jar.Manifest
 class ReadMsgActivity : AppCompatActivity() {
 
     var smsMessageList = Message.messageArray
-    val adapter = MessageAdapter(this, smsMessageList)
+    private val adapter = MessageAdapter(this, smsMessageList)
     lateinit var lvMessages: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +27,6 @@ class ReadMsgActivity : AppCompatActivity() {
         setContentView(R.layout.activity_read_msg)
 
         lvMessages = findViewById(R.id.lv_read_msg)
-
-        val smsManager: SmsManager = SmsManager.getDefault()
 
         val btnSendMsg = findViewById<FloatingActionButton>(R.id.fab_add_msg)
 
